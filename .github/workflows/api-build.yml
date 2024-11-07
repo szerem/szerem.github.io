@@ -3,7 +3,7 @@ name: api-build
 on:
   push:
     paths:
-      - ".github/workflow/api-build.yml"
+      - ".github/workflows/api-build.yml"
       - "demo/my-dotnet/**"
   workflow_dispatch: # manualy
 
