@@ -19,10 +19,16 @@ public static class SwaggerExtensions
 
         // swagger
         // http://localhost:5215/swagger
-        app.UseSwaggerUI(c => c.SwaggerEndpoint("/openapi/v1.json", "My API V1"));
+        app.UseSwaggerUI(c => c.SwaggerEndpoint("/openapi/v1.json", "Demo API v1"));
         
         // scalar/v1
         // http://localhost:5215/scalar/v1
-        app.MapScalarApiReference();
+        app.MapScalarApiReference(options =>
+        {
+            options
+                .WithTitle("Demo API")
+                .WithTheme(ScalarTheme.Mars)
+                .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
+        });
     }
 }
