@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: build dotnet api 
+    name: build dotnet api
     runs-on: ubuntu-latest
     steps:
       - run: pwd && ls -al
@@ -21,5 +21,3 @@ jobs:
         working-directory: ./demo/my-dotnet
       - run: dotnet test
         working-directory: ./demo/my-dotnet
-
-

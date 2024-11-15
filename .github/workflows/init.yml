@@ -9,8 +9,8 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
-  schedule:
-    - cron: "0/5 * * * *" # evry 5 minuts
+  # schedule:
+  #   - cron: "0/5 * * * *" # evry 5 minuts
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
