@@ -20,10 +20,14 @@ jobs:
       - run: go version
       - uses: actions/setup-go@v5
         with:
-          # go-version: "1.22.4"
-          # check-latest: true
-          go-version-file: demo/my-go/go.mod
-          cache-dependency-path: demo/my-do/go.sum
+          cache: true
+          cache-dependency-path: |
+            **/go.mod
+            **/go.sum
+          # # go-version: "1.22.4"
+          # # check-latest: true
+          # go-version-file: demo/my-go/go.mod
+          # cache-dependency-path: demo/my-do/go.sum
       # - run: go mod download      
       - run: go version
       - run: |
