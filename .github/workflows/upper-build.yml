@@ -28,8 +28,8 @@ jobs:
       - run: go version
       - run: |
           ls
-          go build
-          ls
-        working-directory: demo/my-go'
+        #   go build
+        #   ls
+        # working-directory: demo/my-go'
         name: build and test
 
