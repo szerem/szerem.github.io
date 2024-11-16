@@ -27,6 +27,7 @@ jobs:
       # - run: go mod download
       - run: go version
       - run: |
+          pwd
           ls
         #   go build
         #   ls
