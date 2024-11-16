@@ -16,8 +16,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: 'demo/my-go'
-      
       - run: pwd && ls -al
+      - run: pwd && du
       - run: go version
       - uses: actions/setup-go@v5
         with:
