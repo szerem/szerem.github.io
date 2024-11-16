@@ -28,8 +28,6 @@ jobs:
       - run: pwd && ls -al
       - run: du demo
       - run: |
-          pwd
-          ls
           go build
           ls
         working-directory: demo/my-go
