@@ -23,7 +23,7 @@ jobs:
       - run: pwd && ls -al
       - uses: actions/checkout@v4
         with:
-          path: 'demo/my-go'
+          path: 'demo/my-go/'
       - run: pwd && ls -al
       - run: du demo
       - run: |
