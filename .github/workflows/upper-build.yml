@@ -16,6 +16,7 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: "1.22.4"
+          # check-latest: true
           go-version-file: ./demo/my-go/go.mod
           cache-dependency-path: ./demo/my-do/go.sum
       # - run: go mod download
@@ -23,7 +24,7 @@ jobs:
       - run: pwd && ls -al
       - uses: actions/checkout@v4
         with:
-          path: 'demo/my-go/'
+          sparse-checkout: 'demo/my-go/'
       - run: pwd && ls -al
       - run: du demo
       - run: |
