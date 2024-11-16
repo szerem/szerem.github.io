@@ -30,6 +30,6 @@ jobs:
           ls
           go build
           ls
-        working-directory: ./demo/my-go'
+        working-directory: demo/my-go/'
         name: build and test
 
