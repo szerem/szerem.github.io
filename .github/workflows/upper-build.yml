@@ -12,12 +12,6 @@ jobs:
   build:    
     runs-on: ubuntu-latest
     steps:
-      - run: pwd && ls -al
-      - uses: actions/checkout@v4
-        with:
-          path: 'demo/my-go'
-      - run: pwd && ls -al
-      - run: du demo
       - run: go version
       - uses: actions/setup-go@v5
         with:
@@ -26,6 +20,12 @@ jobs:
           cache-dependency-path: ./demo/my-do/go.sum
       # - run: go mod download
       - run: go version
+      - run: pwd && ls -al
+      - uses: actions/checkout@v4
+        with:
+          path: 'demo/my-go'
+      - run: pwd && ls -al
+      - run: du demo
       - run: |
           pwd
           ls
