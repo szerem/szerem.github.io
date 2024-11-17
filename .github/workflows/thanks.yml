@@ -1,6 +1,8 @@
 name: thanks
 
 on:
+  issues: 
+    types: opened
   workflow_dispatch: #manual
 
 jobs:
@@ -11,7 +13,14 @@ jobs:
         id: issue_script
         with:
           script: |
-            console.log(context)
+            # console.log(context)
+            const issue_number = context.issue.number || 2;
+            console.log(`issue_number: ${issue_number}`);
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+
           result-encoding: string
       - name: Get result
         run: echo "${{steps.set-result.outputs.result}}"
