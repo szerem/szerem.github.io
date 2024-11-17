@@ -28,11 +28,11 @@ jobs:
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
-            // lookup issue info
-            const issue = await github.rest.issues.get({
-              repo, owner, issue_number
-            });
-            console.log(`issue: ${issue}`);
+            # // lookup issue info
+            # const issue = await github.rest.issues.get({
+            #   repo, owner, issue_number
+            # });
+            # console.log(`issue: ${issue}`);
 
             # // create comment thanking contributor
             # const comment = await github.rest.issues.createComment({
