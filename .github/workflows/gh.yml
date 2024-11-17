@@ -19,3 +19,4 @@ jobs:
       - run: gh issue list
       - run: gh workflow list
       - run: gh api /repos/:owner/:repo/actions/workflows
+      - run: pwd && ls -al
