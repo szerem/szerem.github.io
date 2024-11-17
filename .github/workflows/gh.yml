@@ -12,9 +12,10 @@ jobs:
     env: 
       GT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - uses: actions/checkout@v4
       - run: env
       - run: gh --version
-      - run: gh auth login
+      # - run: gh auth login
       - run: gh auth status
       - run: gh repo list
       - run: gh issue list
