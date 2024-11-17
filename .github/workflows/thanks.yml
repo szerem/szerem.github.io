@@ -2,6 +2,9 @@
 name: thanks
 
 on:
+  push:
+    paths:
+      - ".github/workflows/thanks.yml"
   issues: 
     types: opened
   workflow_dispatch: #manual
