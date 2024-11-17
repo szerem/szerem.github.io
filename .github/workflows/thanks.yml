@@ -20,7 +20,26 @@ jobs:
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
+            // lookup issue info
+            const issue = await github.rest.issues.get({
+              repo, owner, issue_number
+            });
+            console.log(`issue: ${issue}`);
 
-          result-encoding: string
-      - name: Get result
-        run: echo "${{steps.set-result.outputs.result}}"
+            // create comment thanking contributor
+            const comment = await github.rest.issues.createComment({
+              repo, owner, issue_number,
+              body: "Thanks for your contribution!"
+            });
+            console.log(`comment id: ${comment.data.id}`);
+            console.log(comment.data);
+
+             // auto label
+            github.rest.issues.addLabels({
+              repo, owner, issue_number,
+              labels: ['todo-review']
+            })
+
+            // make comment id available to subsequent steps
+            return comment.data.id;
+      - run: echo 'comment id=${{ steps.issue_script.outputs.result }}'
