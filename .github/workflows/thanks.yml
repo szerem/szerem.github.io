@@ -47,4 +47,6 @@ jobs:
 
             // make comment id available to subsequent steps
             return comment.data.id;
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: echo 'comment id=${{ steps.issue_script.outputs.result }}'
