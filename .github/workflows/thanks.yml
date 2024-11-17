@@ -18,7 +18,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            # console.log(context)
+            console.log(context)
             const issue_number = context.issue.number || 2;
             console.log(`issue_number: ${issue_number}`);
 
@@ -31,20 +31,20 @@ jobs:
             });
             console.log(`issue: ${issue}`);
 
-            // create comment thanking contributor
-            const comment = await github.rest.issues.createComment({
-              repo, owner, issue_number,
-              body: "Thanks for your contribution!"
-            });
-            console.log(`comment id: ${comment.data.id}`);
-            console.log(comment.data);
+            # // create comment thanking contributor
+            # const comment = await github.rest.issues.createComment({
+            #   repo, owner, issue_number,
+            #   body: "Thanks for your contribution!"
+            # });
+            # console.log(`comment id: ${comment.data.id}`);
+            # console.log(comment.data);
 
-             // auto label
-            github.rest.issues.addLabels({
-              repo, owner, issue_number,
-              labels: ['todo-review']
-            })
+            #  // auto label
+            # github.rest.issues.addLabels({
+            #   repo, owner, issue_number,
+            #   labels: ['todo-review']
+            # })
 
-            // make comment id available to subsequent steps
+            # // make comment id available to subsequent steps
             return comment.data.id;
       - run: echo 'comment id=${{ steps.issue_script.outputs.result }}'
