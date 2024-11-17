@@ -20,6 +20,7 @@ jobs:
         id: issue_script
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          # result-encoding: string
           script: |
             console.log(context)
             # const issue_number = context.issue.number || 2;
