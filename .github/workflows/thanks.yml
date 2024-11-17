@@ -13,7 +13,7 @@ jobs:
       - uses: actions/github-script@v7
         id: issue_script
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.GITHUB_TOKEN }}
           script: |
             # console.log(context)
             const issue_number = context.issue.number || 2;
