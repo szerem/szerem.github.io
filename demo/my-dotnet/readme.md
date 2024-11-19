@@ -15,8 +15,8 @@ docker compose up
 
 
 
-
-#  git update-index --chmod=+x build-push.sh
+git update-index --chmod=+x build-only.sh;
+git update-index --chmod=+x build-push.sh;
 
 
 
