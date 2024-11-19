@@ -13,13 +13,13 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    # defaults:
-    #   run:
-    #     working-directory: "demo/my-go/**"
+    defaults:
+      run:
+        working-directory: "demo/my-go/**"
     steps:
+      - uses: actions/checkout@v4
       - run: pwd
       - run: tree
-      # - uses: actions/checkout@v4
       # - uses: actions/setup-go@v5
       #   with:
       #     go-version: 1.22.4
