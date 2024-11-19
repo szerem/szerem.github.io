@@ -17,8 +17,8 @@ jobs:
       run:
         working-directory: "demo/my-go/**"
     steps:
+      - run: pwd && ls -al
       - uses: actions/checkout@v4
-      - run: pwd
       - run: tree
       # - uses: actions/setup-go@v5
       #   with:
