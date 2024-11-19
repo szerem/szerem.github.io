@@ -13,9 +13,9 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: "demo/my-go/**"
+    # defaults:
+    #   run:
+    #     working-directory: "demo/my-go/**"
     steps:
       - run: pwd && ls -al
       - uses: actions/checkout@v4
