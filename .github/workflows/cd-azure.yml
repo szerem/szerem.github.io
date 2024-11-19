@@ -33,7 +33,8 @@ jobs:
 
       - name: publish doker
         run: pwd & tree
-        # run: ./build-push.sh # can reuse local build scripts for CI/CD        
+        working-directory: demo/my-dotnet
+      - run: ./build-push.sh # can reuse local build scripts for CI/CD        
         working-directory: demo/my-dotnet
 
   # deploy:
