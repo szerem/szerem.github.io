@@ -8,6 +8,10 @@ on:
       - "demo/my-go/**"
   workflow_dispatch: # manual
 
+permissions: 
+  packages: write
+  contents: read # not needed in public repos
+
 jobs:
   cross:
     permissions:
