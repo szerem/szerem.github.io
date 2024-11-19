@@ -1,4 +1,4 @@
-# https://github.com/g0t4/course-gh-actions/blob/main/.github/workflows/upper-cross.yml
+# release 
 name: upper-cross
 
 on:
