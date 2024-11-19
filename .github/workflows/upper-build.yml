@@ -26,4 +26,5 @@ jobs:
       - run: ls
       - run: go build
       - run: ls
+      # - run: go test -v
 
