@@ -1,9 +1,9 @@
 name: gh
 
 on:
-  push:
-    paths:
-      - ".github/workflows/gh.yml"
+  # push:
+  #   paths:
+  #     - ".github/workflows/gh.yml"
   workflow_dispatch: # manual
 
 jobs:
