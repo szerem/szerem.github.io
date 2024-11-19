@@ -5,7 +5,8 @@
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS builder
 
 # copy in git files for versioning
-COPY . /source/
+COPY api/ /source/
+RUN ls -la /source/*
 
 WORKDIR /source
 
