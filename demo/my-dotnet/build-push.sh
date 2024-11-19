@@ -1,8 +1,7 @@
 #!/bin/bash
-
+echo "$0 started"
 
 ./build-only.sh
 docker compose push
 
-#  git update-index --chmod=+x build-push.sh
-
+echo "$0 DONE"

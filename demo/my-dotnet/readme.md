@@ -16,6 +16,7 @@ docker compose up
 
 
 
+#  git update-index --chmod=+x build-push.sh
 
 
 
