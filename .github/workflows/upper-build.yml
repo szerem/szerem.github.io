@@ -10,30 +10,21 @@ on:
 
 jobs:
   build:    
-    runs-on: self-hosted
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: demo/my-go
     steps:
       - run: pwd && ls -al
       - uses: actions/checkout@v4
-        with:
-          sparse-checkout: 'demo/my-go/'
-      - run: pwd && ls -al
-      # - run: go version
       - uses: actions/setup-go@v5
         with:
-          go-version-file: demo/my-go/go.mod
+          go-version-file: 1.22
           cache: true
           cache-dependency-path: |
             **/go.mod
             **/go.sum
-          # # go-version: "1.22.4"
-          # # check-latest: true
-          # go-version-file: demo/my-go/go.mod
-          # cache-dependency-path: demo/my-do/go.sum
-      - run: go mod download      
-      # - run: go version
-      - run: |
-          go build
-          ls
-        working-directory: demo/my-go
-        name: build and test
+      - run: ls
+      - run: go build
+      - run: ls
 
