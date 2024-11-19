@@ -1,5 +1,6 @@
 // demo app
 using api.extensions;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,16 +18,22 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerFeature();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
+app.MapGet("/sensitive", (string? password) =>
+{
+    return "Access denied!";
+});
+
+
 app.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -37,18 +44,27 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast")
-.WithTags("atest")
+.WithTags("My-Api")
 .WithOpenApi();
 
-// using (var scope = app.Services.CreateScope())
-// {
-//     var sampleService = scope.ServiceProvider.GetRequiredService<SampleService>();
-//     sampleService.DoSomething();
-// }
+var get_version = () => typeof(WeatherForecast).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
+
+app.MapGet("/healthz", () =>
+{
+    return $"Healthy\n{get_version()}";
+});
+
+app.MapGet("/version", get_version);
+
+app.MapFallback(() =>
+{
+    // show version of app so each deploy is obvious
+    return $"Pick a real path!\n\tlike /weatherforecast\n\nVersion: {get_version()}";
+});
 
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    public int TemperatureF => (int)Math.Round(32.0 + (9.0 / 5.0 * TemperatureC));
 }
