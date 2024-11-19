@@ -1,10 +1,10 @@
 name: upper-build
 
 on:
-  push:
-    paths:
-      - ".github/workflows/upper-build.yml"
-      - "demo/my-go/**"
+  # push:
+  #   paths:
+  #     - ".github/workflows/upper-build.yml"
+  #     - "demo/my-go/**"
 
   workflow_dispatch: # manual
 
