@@ -29,5 +29,6 @@ do
 done
 
 echo "::group::tree..."
+pwd
 tree
 echo "::endgroup::"

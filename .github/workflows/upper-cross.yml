@@ -36,12 +36,12 @@ jobs:
       
       - uses: softprops/action-gh-release@v2
         with:
-          files: ./upper/bin/upper*
+          files: ./demo/my-go/bin/upper*
           body: "Binaries for the upper (go) command line tool!!!"
           tag_name: ${{ github.ref_name }}
         if: startsWith(github.ref, 'refs/tags/')
-        
+
       - uses: actions/upload-artifact@v4
         with:
-          path: ./upper/bin/upper*
+          path: ./demo/my-go/bin/upper*
           name: build
