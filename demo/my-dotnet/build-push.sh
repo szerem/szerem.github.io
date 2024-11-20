@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "$0 started"
 
-./build-only.sh
+. build-only.sh
 # docker compose push
 
 echo "AAAAAAAAAAAAAAAAAAAAAAAAAA $MY_APP_VERSION"
