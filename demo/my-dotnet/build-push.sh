@@ -1,11 +1,10 @@
 #!/bin/bash
 echo "$0 started"
 
-. build-only.sh
-# docker compose push
+my_app_version=$(git describe --tag)
 
-echo "AAAAAAAAAAAAAAAAAAAAAAAAAA $MY_APP_VERSION"
-docker push
-# docker push szerem/my-friendly-name
+./build-only.sh $my_app_version
+# docker compose push
+docker push "szerem/$my_app_version"
 
 echo "$0 done."
