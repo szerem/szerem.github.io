@@ -19,11 +19,11 @@ git update-index --chmod=+x build-only.sh;
 git update-index --chmod=+x build-push.sh;
 
 
+docker pull szerem/v1.1.2-5-gcdb09db:latest
+docker run -p 8082:80 -td szerem/v1.1.2-5-gcdb09db:latest
 
-
-
-
-
+docker run --rm -i -t szerem/v1.1.2-5-gcdb09db:latest
+docker run szerem/v1.1.2-5-gcdb09db:latest -d -p 8080:80
 
 
 ``` docker
