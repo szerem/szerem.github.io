@@ -1,0 +1,21 @@
+name: cd-azure
+
+on:
+  push:
+    paths:
+      - ".github/workflows/cd-node.yml"
+      - "demo/my-node/**"
+  workflow_dispatch: # manual
+
+jobs:  
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # all commits, so we can generate version off of tags/commit sha...
+        
+      - run: pwd & tree
+      
