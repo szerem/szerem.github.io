@@ -64,3 +64,41 @@ cd node/file
 docker run -v $PWD/:/app -w /app -it node node create-file.js
 
 ```
+
+
+## create mongo container 
+``` powershell
+docker container prune
+docker pull mongo
+docker run mongo 
+docker exec -it <id> bash   
+  ``` bash 
+  ps -e
+  cat /usr/local/bin/docker-entrypoint.sh 
+  ```
+docker inspect <id>
+docker-entrypoint.sh
+
+
+docker exec -it <id> mongosh 
+  ``` mongodb-shell 
+  db.version()
+  show dbs
+  db
+  use test
+  db.animals.insert({"animal":"cat"})
+  db.animals.insert({"animal":"dog"})
+  db.animals.insert({"animal":"monkey"})
+  db.animals.find()
+  ```
+docker exec -it <id> mongosh 
+
+
+
+docker run -d -v $PWD/mongo/db/:/data/db/ mongo
+docker exec -it <id> mongosh 
+docker exec -it <id> bash 
+  ``` bash 
+  mongosh
+  ```
+```
