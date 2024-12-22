@@ -58,4 +58,9 @@ docker run -v $PWD/:/app -w /app -it node npm init -y
 docker run -v $PWD/:/app -w /app -it node npm install express
 docker run -v $PWD/:/app -w /app -it node node index.js
 docker run -v $PWD/:/app -w /app -it -p 3000:3000 node node index.js
+
+
+cd node/file
+docker run -v $PWD/:/app -w /app -it node node create-file.js
+
 ```
