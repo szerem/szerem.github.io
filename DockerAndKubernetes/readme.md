@@ -72,16 +72,12 @@ docker container prune
 docker pull mongo
 docker run mongo 
 docker exec -it <id> bash   
-  ``` bash 
   ps -e
   cat /usr/local/bin/docker-entrypoint.sh 
-  ```
 docker inspect <id>
 docker-entrypoint.sh
 
-
 docker exec -it <id> mongosh 
-  ``` mongodb-shell 
   db.version()
   show dbs
   db
@@ -90,15 +86,64 @@ docker exec -it <id> mongosh
   db.animals.insert({"animal":"dog"})
   db.animals.insert({"animal":"monkey"})
   db.animals.find()
-  ```
 docker exec -it <id> mongosh 
-
 
 
 docker run -d -v $PWD/mongo/db/:/data/db/ mongo
 docker exec -it <id> mongosh 
 docker exec -it <id> bash 
-  ``` bash 
-  mongosh
-  ```
+  mongosh  
+
 ```
+
+
+
+## mapping data for development purposes
+
+
+### wordpress 
+``` powershell
+docker container prune
+docker run -d -p 8080:80 wordpress
+```
+
+### docker network 
+docker run -it busybox      | docker run -it busybox
+  hostname -i               |
+    172.17.0.4              |     172.17.0.2
+  ping 172.17.0.2           |   ping 172.17.0.4
+  docker inspect <id>
+
+docker exec <id> env
+
+### case 1 by name 
+#### mysql 
+docker run --name mysql_db_server -e MYSQL_ROOT_PASSWORD=example mysql 
+                  ----------------
+#### php my admin
+docker run --name phpmyadmin -d --link mysql_db_server:db -p 8083:80 phpmyadmin
+                                  -----------------------
+
+
+### case 2 by ip 
+#### mariadb 
+docker run -e MARIADB_ROOT_PASSWORD=example mariadb 
+docker run -it <id> sh 
+  hostname -i
+    172.17.0.5
+
+#### phpmyadmin
+docker run -p 8085:80 -e PMA_HOST=172.17.0.5 phpmyadmin
+
+
+### case 3 in bash 
+  docker run \
+    -e MARIADB_ROOT_PASSWORD=example \
+    mariadb 
+
+  docker run \
+    -p 8087:80 \
+    -e PMA_HOST=172.17.0.5 \
+    phpmyadmin
+
+## 
