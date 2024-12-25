@@ -137,13 +137,37 @@ docker run -p 8085:80 -e PMA_HOST=172.17.0.5 phpmyadmin
 
 
 ### case 3 in bash 
+  docker network create my-sql
   docker run \
-    -e MARIADB_ROOT_PASSWORD=example \
-    mariadb 
+    --name mariadb_server \
+    --network my-sql \
+    -e MARIADB_ROOT_PASSWORD=my-password \
+    -d mariadb 
 
   docker run \
-    -p 8087:80 \
-    -e PMA_HOST=172.17.0.5 \
-    phpmyadmin
+    --name phpmyadmin_server \
+    --network my-sql \
+    -p 8080:80 \
+    -e PMA_HOST=mariadb_server\
+    -d phpmyadmin
 
+  docker run \
+    --name wordpress_server \
+    --network my-sql \
+    -p 8082:80 \
+    -e WORDPRESS_DB_HOST=mariadb_server \
+    -e WORDPRESS_DB_USER=root \
+    -e WORDPRESS_DB_PASSWORD=my-password \
+    -e WORDPRESS_DB_NAME=exampledb \
+    -it wordpress
+
+  docker network inspect my-sql
+
+
+## custom bridge network 
+docker network ls
+docker network create my-net
+docker network inspect my-net 
+docker run -it --network my-net --name name1 -h host1 busybox
+docker run -it --network my-net --name name2 -h host2 busybox
 ## 
