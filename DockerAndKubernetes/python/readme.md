@@ -27,6 +27,14 @@ cd my-app
 docker build . -t images-gallery-web
 
 docker run -it -p 3000:3000 images-gallery-web
-
 ```
 
+## web & api 
+``` 
+docker run -d -p 5050:5050 images-gallery-api
+docker run -d -p 3000:3000 images-gallery-web
+
+docker exec -it <id> sh 
+    ps 
+    ps -x
+```
