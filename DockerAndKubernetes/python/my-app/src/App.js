@@ -35,7 +35,7 @@ function App() {
     <div>
       <Header title="Images Gallery" />
       <Search word={word} setWord={setWord} handleSubmit={handleSearchSubmit} />
-      <Container fluid>
+      <Container  className="justify-content-md-center">
         {images.length ? (
           <Row>
             {images.map((image, i) => (

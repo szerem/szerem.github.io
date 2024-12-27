@@ -3,7 +3,7 @@ import { Container, Button, Form } from "react-bootstrap";
 
 const Search = ({ word, setWord, handleSubmit }) => {
   return (
-    <Container fluid>
+    <Container className="justify-content-md-center">
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Control
