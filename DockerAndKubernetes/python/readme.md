@@ -50,3 +50,9 @@ docker-compose up -d
 docker-compose down
 
 ```
+docker exec -it <id> mongosh --username "root" --password "example"
+    db.version()
+
+
+
+
