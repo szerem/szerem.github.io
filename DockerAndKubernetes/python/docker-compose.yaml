@@ -1,13 +1,20 @@
+version: "3"
 services:
   frontend:
-    build: ./my-app    
+    stdin_open: true
+    tty: true
+    build: ./my-app
     ports:
       - 3000:3000
       - 8080:3000
-
+    volumes:
+      - /app/node_modules
+      - ./my-app/:/app
   backend:
     build: ./api
-    env_file: 
+    env_file:
       - /api/.env.local
     ports:
       - 5050:5050
+    volumes:
+      - ./api/:/app
