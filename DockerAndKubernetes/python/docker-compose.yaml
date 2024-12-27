@@ -1,0 +1,13 @@
+services:
+  frontend:
+    build: ./my-app    
+    ports:
+      - 3000:3000
+      - 8080:3000
+
+  backend:
+    build: ./api
+    env_file: 
+      - /api/.env.local
+    ports:
+      - 5050:5050

@@ -38,3 +38,15 @@ docker exec -it <id> sh
     ps 
     ps -x
 ```
+
+
+
+## docker compose 
+```
+docker container prune
+docker-compose up 
+docker-compose up -d 
+
+docker-compose down
+
+```
