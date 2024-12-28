@@ -1,4 +1,4 @@
-# step by step 
+# DOCKER 
 
 ## how to check if running 
 ``` powershell
@@ -171,3 +171,46 @@ docker network inspect my-net
 docker run -it --network my-net --name name1 -h host1 busybox
 docker run -it --network my-net --name name2 -h host2 busybox
 ## 
+
+
+
+# K8S 
+
+kubectl run nginx --image=nginx
+kubectl describe pod nginx
+kubectl get pods
+kubectl get pods -o wide
+kubectl delete pod nginx
+
+Set-Alias -Name k -Value kubectl
+
+k create deployment nginx-deployment --image=nginx
+k describe deployment nginx-deployment
+k describe pod nginx-deployment-c45d79c8-bwmzg 
+
+k scale deployment nginx-deployment --replicas=5
+k get pods -o wide
+
+k exec --stdin --tty nginx-deployment-c45d79c8-bwmzg -- /bin/bash
+k exec -it nginx-deployment-c45d79c8-bwmzg -- /bin/bash
+k exec -it nginx-deployment-c45d79c8-bwmzg -- bash
+
+k get deploy 
+k get deploy -o wide
+
+k expose deployment nginx-deployment --port=8080 --target-port=80
+k get services
+k get services -o wide
+
+k describe services nginx-deployment
+  
+k port-forward service/nginx-deployment 8081:8080
+
+k delete svc nginx-deployment
+k expose deployment nginx-deployment --type=NodePort --port=8080 --target-port=80 --name=nginx-deployment
+
+
+k delete service nginx-deployment
+k delete deployment nginx-deployment
+
+<!-- https://kubernetes.io/docs/tasks/debug/debug-application/debug-service/ -->
