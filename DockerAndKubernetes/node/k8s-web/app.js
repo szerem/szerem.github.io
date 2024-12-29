@@ -4,10 +4,11 @@ const app = express()
 
 const port = 3000
 const host = os.hostname()
-const date = new Date();
 
 app.get('/', (req, res) => {
-  res.send(`Hello World! ${host} ${date.toISOString()}`)
+  const helloMessage = `Hello World! ${host} ${(new Date()).toISOString()}`;
+  console.log(`server: ${helloMessage}`);
+  res.send(`client: ${helloMessage}`);
 })
 
 app.listen(port, () => {

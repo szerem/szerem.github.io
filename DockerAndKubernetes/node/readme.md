@@ -1,4 +1,4 @@
-
+## by kubectl 
 cd k8s-web 
 docker build . -t szerem/k8s-web
 docker login 
@@ -26,3 +26,22 @@ k delete svc k8s-web; k delete deploy k8s-web;
 
 
 k port-forward services/k8s-web-s 5202:5101
+
+
+k delete all --all
+
+## by yaml 
+https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/#DeploymentSpec
+
+k apply -f deployment.yaml
+
+
+https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceSpec
+
+k apply -f service.yaml
+
+minikube service k8s-web-b
+
+k delete -f deployment.yaml -f service.yaml
+
+
