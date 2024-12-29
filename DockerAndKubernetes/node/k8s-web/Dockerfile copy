@@ -1,0 +1,11 @@
+FROM node:alpine3.21
+WORKDIR /app
+
+EXPOSE 3000
+
+RUN apk --no-cache add curl
+
+COPY . ./
+
+CMD [ "node", "server.mjs" ]
+

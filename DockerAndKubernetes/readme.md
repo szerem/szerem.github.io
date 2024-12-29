@@ -175,7 +175,7 @@ docker run -it --network my-net --name name2 -h host2 busybox
 
 
 # K8S 
-
+kubectl cluster-info
 kubectl run nginx --image=nginx
 kubectl describe pod nginx
 kubectl get pods
@@ -214,3 +214,50 @@ k delete service nginx-deployment
 k delete deployment nginx-deployment
 
 <!-- https://kubernetes.io/docs/tasks/debug/debug-application/debug-service/ -->
+
+
+# minikube 
+minikube stop 
+minikube start
+minikube status
+minikube ip
+  ping 172.25.233.132
+kubectl config view
+kubectl cluster-info
+
+minikube ssh 
+u:docker 
+p:tcuser
+
+
+k get nodes -o wide
+
+## NodePort 
+
+kubectl create deployment hello-minikube1 --image=kicbase/echo-server:1.0 --replicas=3
+kubectl expose deployment hello-minikube1 --type=NodePort --port=8080
+kubectl get svc
+minikube service hello-minikube1 --url
+curl http://172.25.238.57:32737
+
+kubectl get service hello-minikube1  --output='jsonpath="{.spec.ports[0].nodePort}"'
+
+k delete svc hello-minikube1; k delete deploy hello-minikube1;
+
+## LoadBalancer
+terminal 
+minikube tunnel
+
+kubectl create deployment hello-minikube1 --image=kicbase/echo-server:1.0
+kubectl expose deployment hello-minikube1 --type=LoadBalancer --port=8080
+
+browser 
+http://REPLACE_WITH_EXTERNAL_IP:8080
+
+
+## nginx
+kubectl create deployment nginx --image=nginx 
+kubectl expose deployment nginx --type=NodePort --port=80
+kubectl get svc -o wide
+minikube service nginx
+k delete svc nginx; k delete deploy nginx;
