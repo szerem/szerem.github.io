@@ -44,4 +44,18 @@ minikube service k8s-web-b
 
 k delete -f deployment.yaml -f service.yaml
 
+## deploy web and nginx 
 
+cd k8s-web-nginx
+[ web   ]    <-- Loadbalanser 
+[ nginx ]
+
+```
+docker build . -t szerem/k8s-web-nginx 
+docker push szerem/k8s-web-nginx 
+
+k apply -f k8s-web-nginx.yaml -f nginx.yaml
+```
+minikube service k8s-web-nginx
+curl http://172.31.71.39:31009
+curl http://172.31.71.39:31009/nginx
