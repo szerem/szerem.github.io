@@ -59,3 +59,8 @@ k apply -f k8s-web-nginx.yaml -f nginx.yaml
 minikube service k8s-web-nginx
 curl http://172.31.71.39:31009
 curl http://172.31.71.39:31009/nginx
+
+k exec k8s-web-nginx-69667db456-x6vv4 -- nslookup nginx
+k exec k8s-web-nginx-69667db456-x6vv4 -- wget -qO- http://nginx
+
+k delete -f k8s-web-nginx.yaml -f nginx.yaml
