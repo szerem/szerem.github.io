@@ -218,7 +218,7 @@ k delete deployment nginx-deployment
 
 # minikube 
 minikube stop 
-minikube start
+minikube start --driver=hyperv
 minikube status
 minikube ip
   ping 172.25.233.132
@@ -261,3 +261,12 @@ kubectl expose deployment nginx --type=NodePort --port=80
 kubectl get svc -o wide
 minikube service nginx
 k delete svc nginx; k delete deploy nginx;
+
+# minikube CRI-O
+minikube stop 
+minikube delete
+minikube start --driver=hyperv --container-runtime=cri-o
+minikube start --driver=hyperv --container-runtime=containerd
+
+k apply -f ...
+k delete -f ...
