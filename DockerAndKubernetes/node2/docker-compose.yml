@@ -1,0 +1,10 @@
+version: '3'
+services: 
+  redis-svc:
+    image: redis
+  node-app:
+    build: .
+    # image: my-node
+    ports:
+      - "4001:8080"
+
