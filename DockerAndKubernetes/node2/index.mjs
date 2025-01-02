@@ -1,5 +1,6 @@
 import express from "express";
 import { createClient } from "redis";
+import process from "process";
 
 const PORT = 8080;
 
@@ -12,6 +13,11 @@ await client.set("visits", 0);
 
 /// web
 const app = express();
+
+app.get("/stop", async (req, res) => {
+  process.exit(0);
+});
+
 
 app.get("/visits", async (req, res) => {
   const visits = parseInt(await client.get("visits"));

@@ -12,3 +12,4 @@ docker exec -it <id> sh
 
 
 docker-compose up --build 
+docker-compose up -d

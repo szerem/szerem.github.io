@@ -1,8 +1,10 @@
+# docker-compose up --build 
 version: '3'
 services: 
   redis-svc:
     image: redis
   node-app:
+    restart: always
     build: .
     # image: my-node
     ports:
