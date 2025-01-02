@@ -7,9 +7,15 @@ const PORT = 8080;
 const client = createClient({ url: "redis://redis-svc:6379" });
 client.on("error", (err) => console.log("Redis Client Error", err));
 
+// (async () => {
+//   await client.connect();
+//   console.log(await client.ping()); // 'PONG'
+//   await client.set("visits", 0);  
+// })();
 await client.connect();
 console.log(await client.ping()); // 'PONG'
-await client.set("visits", 0);
+await client.set("visits", 0);  
+
 
 /// web
 const app = express();
